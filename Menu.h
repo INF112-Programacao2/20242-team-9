@@ -28,6 +28,7 @@ class Menu{
         Menu();
         Menu(sf::RenderWindow* janela);
         ~Menu();
+        void carrega_fonte();
         void run_menu();
         bool is_jogar_selecionado();
 };

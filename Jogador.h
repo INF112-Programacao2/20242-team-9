@@ -5,6 +5,8 @@
 #include "Deck.h"
 #include "MonteCarta.h"
 #include <vector>
+#include <exception>
+#include <iostream>
 
 class Jogador {
     private:
@@ -12,17 +14,17 @@ class Jogador {
         MonteCarta monte;
         int vida, energia;
         sf::Sprite barra;
-        sf::Texture texturaBarra;
+        sf::Texture texturaBarra; float escalaBarra=1;
         std::vector<Carta> mao;
         std::vector<sf::Vector2f> coordsCartas;
     public:
-        Jogador(float coordX, float coordY);
-        void carrega_barra(float coordX, float coordY);
+        Jogador(unsigned int coordX, unsigned int coordY);
+        void carrega_barra(unsigned int coordX, unsigned int coordY);
         void descerCarta();
         void comprarCarta();
         void comprarEnergia();
         int get_numCartas() const;
-        void inicializa_jogador(float coordX, float coordY);
+        void inicializa_jogador(unsigned int coordX, unsigned int coordY);
         sf::Sprite get_sprite_mao(int pos);
         sf::Sprite get_sprite_barra() const;
 };

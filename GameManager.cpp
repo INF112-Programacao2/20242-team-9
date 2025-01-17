@@ -1,9 +1,9 @@
 #include "GameManager.h"
 
 GameManager::GameManager()
-    : window(sf::VideoMode(1360, 768), "RPG Game"),
+    : window(sf::VideoMode(1360, 768), "Insecttle"),
     estadoAtual(EstadoJogo::Menu),
-    menu(&window) {
+    menu(&window), jogo(nullptr) {
     window.setFramerateLimit(60);
 }
 
@@ -18,7 +18,7 @@ void GameManager::run() {
         switch (estadoAtual) {
             case EstadoJogo::Menu:
                 menu.run_menu();
-                if (menu.is_jogar_selecionado() && jogo) {
+                if (menu.is_jogar_selecionado()) {
                     jogo = new Jogo(&window);
                     estadoAtual = EstadoJogo::Jogando;
                 }

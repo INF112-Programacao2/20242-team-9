@@ -5,22 +5,29 @@ sf::Color darkGreen(0, 100, 0);
 
 Menu::Menu(sf::RenderWindow* janela) 
     : window(janela), pos(2), escolhido(false), selecionado(false), estadoAtual(EstadoJogo::Menu) {
+        try{
+            carrega_fonte();
+        } catch(std::exception &e){
+            std::cout << e.what() << std::endl;
+        }
+        inicializa_menu();
+}
+
+void Menu::carrega_fonte(){
     fonte = new sf::Font();
     if (!fonte->loadFromFile("fonte.ttf")) {
         throw std::runtime_error("Erro ao carregar a fonte!");
     }
-    inicializa_menu();
 }
-
 
 Menu::~Menu() {
     delete fonte;
 }
 
 void Menu::inicializa_menu() {
-    opcoes = {"RPG Game", "RPG Game", "Jogar", "Jogar", "Opcoes", "Opcoes", "Regras", "Regras", "Sair", "Sair"};
+    opcoes = {"INSECTTLE", "INSECTTLE", "Jogar", "Jogar", "Opcoes", "Opcoes", "Regras", "Regras", "Sair", "Sair"};
     textos.resize(10);
-    coordsTexto = {{563, 43},{560, 40}, {613, 194},{610, 191}, {603, 285},{600, 282}, {603, 373},{600, 370}, {626,460},{623, 457}};
+    coordsTexto = {{546, 43},{543, 40}, {613, 194},{610, 191}, {603, 285},{600, 282}, {603, 373},{600, 370}, {626,460},{623, 457}};
     tamTexto = {30, 30, 24, 24, 24, 24, 24, 24, 24, 24};
     
     for(std::size_t i = 0; i < textos.size(); i++) {

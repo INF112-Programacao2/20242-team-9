@@ -2,6 +2,7 @@
 #define CARTA_H
 
 #include "Tipo.h"
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 class Carta{
@@ -13,12 +14,13 @@ class Carta{
         sf::Sprite carta;
         sf::Texture texturaCarta;
     public:
-        Carta();
+        Carta(sf::Vector2f coords);
+        Carta(){}
         void inicializa_jogador();
         void carregar_carta_frente(sf::Vector2f coords);
         sf::Vector2f get_coords_frente() const;
         void carregar_carta_tras(sf::Vector2f coords);
-        void carregar_carta_monte(sf::Vector2f coords);
+        void carregar_carta_monte();
         sf::Sprite get_sprite();
 
 };

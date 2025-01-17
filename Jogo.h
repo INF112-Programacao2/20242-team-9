@@ -14,11 +14,11 @@ class Jogo {
         sf::Texture texturaMesa;
         Carta carta;
         MonteCarta monte;
-        bool saidaRequerida;
         Jogador jogador1, jogador2;
 
     public:
         Jogo(sf::RenderWindow* window);
+        void carrega_tabuleiro();
         void loop_eventos();
         void desenhar();
         void run_jogo();

@@ -1,17 +1,23 @@
 #include "Jogo.h"
 
 //coordenadas da barra de vida e de energia na tela
-float coordX1 = 1300, coordY1 = 700, coordX2= 100, coordY2= 60;
+unsigned int coordX1 = 1100, coordY1 = 600, coordX2= 400, coordY2= 400;
 
-Jogo::Jogo(sf::RenderWindow* window) : janela(window), carta(), jogador1(coordX1, coordY1),
-jogador2(coordX2, coordY2){
+Jogo::Jogo(sf::RenderWindow* window) : janela(window), jogador1(coordX1, coordY1), jogador2(coordX2, coordY2){
+    try{
+        carrega_tabuleiro();
+        std::cout << "CARREGOU TABULEIRO!" << std::endl;
+    } catch (std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+}
+void Jogo::carrega_tabuleiro(){
     if (!texturaMesa.loadFromFile("board.png")) {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     mesa.setTexture(texturaMesa);
     mesa.setPosition(0, 0);
 }
-
 void Jogo::loop_eventos() {
     sf::Event evento;
     while (janela->pollEvent(evento)) {

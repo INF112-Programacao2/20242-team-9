@@ -2,6 +2,8 @@
 #define MONTE_CARTA_H
 #include "Carta.h"
 #include "Deck.h"
+#include <iostream>
+
 class MonteCarta{
     private:
         Carta carta;
