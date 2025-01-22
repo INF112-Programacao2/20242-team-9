@@ -7,7 +7,7 @@ class Abelha : public Carta {
     private:
 
     public:
-        Abelha(sf::Vector2f coords) : Carta(coords) {}
+        Abelha(sf::Vector2f coordsCarta) : Carta(coordsCarta) {}
         virtual ~Abelha() {}
         //virtual int ferroar()=0;
         //virtual int voar()=0;

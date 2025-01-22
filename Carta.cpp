@@ -11,6 +11,7 @@ Carta::Carta(sf::Vector2f coords){
     efeito = 0;
     custo = 0;
     caminho = "";
+
 }
 void Carta::carregar_carta_frente(sf::Vector2f coords){
     if(!texturaCarta1.loadFromFile("assets/cards/carta_frente.png")){
@@ -50,6 +51,10 @@ sf::Sprite Carta::get_sprite_inseto() const{
 
 sf::Vector2f Carta::get_coords_carta(int pos) const{
     return coordsCartas[pos];
+}
+
+sf::Vector2f Carta::get_coords_inseto(int pos) const{
+    return coordsInsetos[pos];
 }
 
 void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho){

@@ -6,7 +6,7 @@ class LouvaDeus : public Carta {
     private:
         const Tipo tipo = Tipo::LouvaDeus;
     public:
-        LouvaDeus(sf::Vector2f coords);
+        LouvaDeus(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
         //int morder();
         //int camuflar();
         //int golpear();

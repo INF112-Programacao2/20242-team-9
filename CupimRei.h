@@ -7,7 +7,7 @@ class CupimRei : public Cupim{
     private:
         const Tipo tipo = Tipo::CupimRei;
     public:
-        CupimRei(sf::Vector2f coords);
+        CupimRei(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
         //int morder () override;
         //int voar () override {};
 };

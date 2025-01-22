@@ -8,9 +8,7 @@ class CupimSoldado : public Cupim {
     private:
         const Tipo tipo = Tipo::CupimSoldado;
     public:
-        CupimSoldado(sf::Vector2f);
-        //int morder() override;
-        //int voar() override;
+        CupimSoldado(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
 };
 
 #endif

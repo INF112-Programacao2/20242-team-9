@@ -6,7 +6,7 @@ class AbelhaOperaria : public Abelha{
     private:
         const Tipo tipo = Tipo::AbelhaOperaria;
     public:
-        AbelhaOperaria(sf::Vector2f coords);
+        AbelhaOperaria(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
         //void carrega_icone_inseto(sf::Vector2f coords, std::string caminho);
 };
 

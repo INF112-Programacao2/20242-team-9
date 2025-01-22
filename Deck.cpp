@@ -34,29 +34,41 @@ void Deck::sortear_deck() {
 
 void Deck::converte_tipo(Tipo tipo, int pos){
     Carta *temp = new Carta();
+    sf::Vector2f coordsCarta = temp->get_coords_carta(pos);
+    sf::Vector2f coordsInseto = temp->get_coords_inseto(pos);
+    
     if(tipo == Tipo::AbelhaRainha){
-        cartasEscolhidas.emplace_back(new AbelhaRainha(temp->get_coords_carta(pos)));
+        cartasEscolhidas.emplace_back(new AbelhaRainha(coordsCarta, coordsInseto));
     }
     else if(tipo == Tipo::AbelhaOperaria){
-        cartasEscolhidas.emplace_back(new AbelhaOperaria(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::Barata){
-        cartasEscolhidas.emplace_back(new Barata(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::Besouro){
-        cartasEscolhidas.emplace_back(new Besouro(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::CupimRei){
-        cartasEscolhidas.emplace_back(new CupimRei(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::CupimSoldado){
-        cartasEscolhidas.emplace_back(new CupimSoldado(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::Cigarra){
-        cartasEscolhidas.emplace_back(new Cigarra(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::LouvaDeus){
-        cartasEscolhidas.emplace_back(new LouvaDeus(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::Gafanhoto){
-        cartasEscolhidas.emplace_back(new Gafanhoto(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::FormigaRainha){
-        cartasEscolhidas.emplace_back(new FormigaRainha(temp->get_coords_carta(pos)));
-    } else if (tipo == Tipo::FormigaZangao){
-        cartasEscolhidas.emplace_back(new FormigaZangao(temp->get_coords_carta(pos)));
+        cartasEscolhidas.emplace_back(new AbelhaOperaria(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::Barata){
+        cartasEscolhidas.emplace_back(new Barata(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::Besouro){
+        cartasEscolhidas.emplace_back(new Besouro(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::CupimRei){
+        cartasEscolhidas.emplace_back(new CupimRei(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::CupimSoldado){
+        cartasEscolhidas.emplace_back(new CupimSoldado(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::Cigarra){
+        cartasEscolhidas.emplace_back(new Cigarra(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::LouvaDeus){
+        cartasEscolhidas.emplace_back(new LouvaDeus(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::Gafanhoto){
+        cartasEscolhidas.emplace_back(new Gafanhoto(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::FormigaRainha){
+        cartasEscolhidas.emplace_back(new FormigaRainha(coordsCarta, coordsInseto));
+    } 
+    else if (tipo == Tipo::FormigaZangao){
+        cartasEscolhidas.emplace_back(new FormigaZangao(coordsCarta, coordsInseto));
     }
     delete temp;
 }

@@ -1,6 +1,6 @@
 #include "AbelhaRainha.h"
 
-AbelhaRainha::AbelhaRainha(sf::Vector2f coords): Abelha(coords){
+AbelhaRainha::AbelhaRainha(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Abelha(coordsCarta){
     dano = 10;
     vida = 80;
     velocidade = 20;
@@ -8,8 +8,8 @@ AbelhaRainha::AbelhaRainha(sf::Vector2f coords): Abelha(coords){
     custo = 6;
     caminho = "assets/insects/abelha_rainha.png";
     // Carregar textura da Abelha Rainha
-    carrega_icone_inseto(coords, caminho);
-    carregar_carta_frente(coords);
+    carrega_icone_inseto(coordsInseto, caminho);
+    carregar_carta_frente(coordsCarta);
     //std::cout << "Abelha Rainha inicializada na posição (" << coords.x << ", " << coords.y << ")." << std::endl;
 }
 

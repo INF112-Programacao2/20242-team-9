@@ -9,7 +9,7 @@ class Formiga : public Carta{
     protected:
         //virtual int morder();
     public:
-        Formiga(sf::Vector2f coords): Carta(coords){}
+        Formiga(sf::Vector2f coordsCarta): Carta(coordsCarta){}
         //virtual void carrega_icone_inseto(sf::Vector2f coords, std::string caminho);
 };  
 

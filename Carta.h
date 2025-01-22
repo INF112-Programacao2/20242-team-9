@@ -16,9 +16,9 @@ class Carta{
         sf::Sprite inseto;
         sf::Texture texturaInseto;
 
-        std::vector<sf::Vector2f> coordsCartas = {{250, 520}, {300, 520}, {350, 520}, {400, 520}, {450, 520}, {500, 520}};
-
-        const float escalaInseto=0.5;
+        const std::vector<sf::Vector2f> coordsCartas = {{250, 520}, {410, 520}, {570, 520}, {730, 520}, {890, 520}, {1050, 520}};
+        const std::vector<sf::Vector2f> coordsInsetos = {{275, 580}, {435, 580}, {595, 580}, {755, 580}, {915, 580}, {940, 580}};
+        const float escalaInseto=0.4;
         unsigned int vida;
         std::string caminho;
         unsigned int dano;
@@ -44,6 +44,7 @@ class Carta{
         void carregar_carta_tras(sf::Vector2f coords);
         void carregar_carta_monte();
         sf::Vector2f get_coords_carta(int pos) const;
+        sf::Vector2f get_coords_inseto(int pos) const;
         virtual sf::Sprite get_sprite_carta() const;
         virtual sf::Sprite get_sprite_inseto() const;
 
