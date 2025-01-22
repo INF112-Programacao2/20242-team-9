@@ -9,7 +9,7 @@ class MonteCarta{
         Carta carta;
     public:
         MonteCarta();
-        sf::Sprite get_sprite();
+        sf::Sprite get_sprite_monte();
         void sorteia_carta_do_deck();
 };
 

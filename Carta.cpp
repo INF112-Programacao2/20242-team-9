@@ -6,22 +6,24 @@ Carta::Carta(sf::Vector2f coords){
     } catch(std::exception &e){
         std::cout << e.what() << std::endl;
     }
+    dano = 0;
+    velocidade = 0;
+    efeito = 0;
+    custo = 0;
+    caminho = "";
 }
 void Carta::carregar_carta_frente(sf::Vector2f coords){
-    if(!texturaCarta.loadFromFile("assets/carta_frente.png")){
+    if(!texturaCarta1.loadFromFile("assets/cards/carta_frente.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
     }
-    carta.setTexture(texturaCarta);
-    carta.setPosition(coords); coordsFrente=coords;
+    carta.setTexture(texturaCarta1);
+    carta.setPosition(coords);
     carta.setScale(escala, escala);
 }
 
-sf::Vector2f Carta::get_coords_frente() const{
-    return coordsFrente;
-}
 
 void Carta::carregar_carta_tras(sf::Vector2f coords){
-    if(!texturaCarta.loadFromFile("carta_tras.png")){
+    if(!texturaCarta.loadFromFile("assets/cards/carta_tras.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     carta.setTexture(texturaCarta);
@@ -30,7 +32,7 @@ void Carta::carregar_carta_tras(sf::Vector2f coords){
 }
 
 void Carta::carregar_carta_monte(){
-    if(!texturaCarta.loadFromFile("carta_tras_monte.png")){
+    if(!texturaCarta.loadFromFile("assets/cards/carta_tras_monte.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     carta.setTexture(texturaCarta);
@@ -38,6 +40,23 @@ void Carta::carregar_carta_monte(){
     carta.setScale(escala, escala);
 }
 
-sf::Sprite Carta::get_sprite(){
+sf::Sprite Carta::get_sprite_carta() const{
     return carta;
+}
+
+sf::Sprite Carta::get_sprite_inseto() const{
+    return inseto;
+}
+
+sf::Vector2f Carta::get_coords_carta(int pos) const{
+    return coordsCartas[pos];
+}
+
+void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho){
+    if(!texturaInseto.loadFromFile(caminho)){
+        throw std::runtime_error("Erro ao carregar a textura!");
+    }
+    inseto.setTexture(texturaInseto);
+    inseto.setPosition(coords);
+    inseto.setScale(escalaInseto, escalaInseto);
 }

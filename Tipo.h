@@ -2,14 +2,17 @@
 #define TIPO_H
 
 enum class Tipo{
-    Abelha,
+    AbelhaRainha,
+    AbelhaOperaria,
     Barata,
     Besouro,
-    Cupim,
+    CupimRei,
+    CupimSoldado,
     Cigarra,
     LouvaDeus,
     Gafanhoto,
-    Formiga
+    FormigaRainha,
+    FormigaZangao
 };
 
 #endif

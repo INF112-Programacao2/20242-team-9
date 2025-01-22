@@ -3,7 +3,9 @@
 //coordenadas da barra de vida e de energia na tela
 unsigned int coordX1 = 1100, coordY1 = 600, coordX2= 400, coordY2= 400;
 
-Jogo::Jogo(sf::RenderWindow* window) : janela(window), jogador1(coordX1, coordY1), jogador2(coordX2, coordY2){
+Jogo::Jogo(sf::RenderWindow* window) : janela(window){
+    jogador1 = new Jogador(coordX1, coordY1);
+    jogador2 = new Jogador(coordX2, coordY2);
     try{
         carrega_tabuleiro();
         std::cout << "CARREGOU TABULEIRO!" << std::endl;
@@ -12,7 +14,7 @@ Jogo::Jogo(sf::RenderWindow* window) : janela(window), jogador1(coordX1, coordY1
     }
 }
 void Jogo::carrega_tabuleiro(){
-    if (!texturaMesa.loadFromFile("board.png")) {
+    if (!texturaMesa.loadFromFile("assets/board/board.png")) {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     mesa.setTexture(texturaMesa);
@@ -37,12 +39,17 @@ void Jogo::run_jogo() {
 void Jogo::desenhar() {
     janela->clear();
     janela->draw(mesa);
-    //janela->draw(carta.get_sprite());
-    for(int i=0; i<jogador1.get_numCartas(); i++){
-        janela->draw(jogador1.get_sprite_mao(i));
+    for(int i=0; i<5; i++){
+        janela->draw(jogador1->get_sprite_mao_carta(i));
+        janela->draw(jogador1->get_sprite_mao_inseto(i));
     }
-    janela->draw(monte.get_sprite());
-    janela->draw(jogador1.get_sprite_barra());
-    janela->draw(jogador2.get_sprite_barra());
+    janela->draw(monte.get_sprite_monte());
+    janela->draw(jogador1->get_sprite_barra());
+    janela->draw(jogador2->get_sprite_barra());
     janela->display();
+}
+
+Jogo::~Jogo(){
+    delete jogador1;
+    delete jogador2;
 }

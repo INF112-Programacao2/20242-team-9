@@ -15,7 +15,7 @@ Menu::Menu(sf::RenderWindow* janela)
 
 void Menu::carrega_fonte(){
     fonte = new sf::Font();
-    if (!fonte->loadFromFile("fonte.ttf")) {
+    if (!fonte->loadFromFile("assets/fonts/fonte_menu.ttf")) {
         throw std::runtime_error("Erro ao carregar a fonte!");
     }
 }

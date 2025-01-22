@@ -10,13 +10,13 @@
 
 class Jogador {
     private:
+        const static unsigned int elixirMax = 10;
         Deck deck;
         MonteCarta monte;
         int vida, energia;
         sf::Sprite barra;
         sf::Texture texturaBarra; float escalaBarra=1;
-        std::vector<Carta> mao;
-        std::vector<sf::Vector2f> coordsCartas;
+        std::vector<Carta*> mao;
     public:
         Jogador(unsigned int coordX, unsigned int coordY);
         void carrega_barra(unsigned int coordX, unsigned int coordY);
@@ -25,8 +25,10 @@ class Jogador {
         void comprarEnergia();
         int get_numCartas() const;
         void inicializa_jogador(unsigned int coordX, unsigned int coordY);
-        sf::Sprite get_sprite_mao(int pos);
+        sf::Sprite get_sprite_mao_carta(int pos) const;
+        sf::Sprite get_sprite_mao_inseto(int pos) const;
         sf::Sprite get_sprite_barra() const;
+        ~Jogador();
 };
 
 #endif
