@@ -5,6 +5,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+
+
 class Carta{
     private:
         const float escala=0.6;
@@ -16,8 +18,8 @@ class Carta{
         sf::Sprite inseto;
         sf::Texture texturaInseto;
 
-        const std::vector<sf::Vector2f> coordsCartas = {{250, 520}, {410, 520}, {570, 520}, {730, 520}, {890, 520}, {1050, 520}};
-        const std::vector<sf::Vector2f> coordsInsetos = {{275, 580}, {435, 580}, {595, 580}, {755, 580}, {915, 580}, {940, 580}};
+         std::vector<sf::Vector2f> coordsCartas = {{250, 520}, {410, 520}, {570, 520}, {730, 520}, {890, 520}, {1050, 520}};
+         std::vector<sf::Vector2f> coordsInsetos = {{275, 580}, {435, 580}, {595, 580}, {755, 580}, {915, 580}, {940, 580}};
         const float escalaInseto=0.4;
         unsigned int vida;
         std::string caminho;
@@ -34,6 +36,7 @@ class Carta{
 
         
     public:
+
         Carta(sf::Vector2f coords);
         Carta(){}
         virtual ~Carta() {}
@@ -47,6 +50,9 @@ class Carta{
         sf::Vector2f get_coords_inseto(int pos) const;
         virtual sf::Sprite get_sprite_carta() const;
         virtual sf::Sprite get_sprite_inseto() const;
+
+        static int player;
+
 
 };
 

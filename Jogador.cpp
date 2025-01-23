@@ -3,13 +3,17 @@
 Jogador::Jogador(unsigned int coordX, unsigned int coordY){
     std::srand(std::time(nullptr));
     inicializa_jogador(coordX, coordY);
+    carrega_barra(coordX, coordY);
 }
 
 void Jogador::inicializa_jogador(unsigned int coordX, unsigned int coordY) {
     try {
+        
         for (int i = 0; i < 5; i++) {
             mao.emplace_back(deck.get_carta_deck(i)); // Constrói a Carta no vetor
         }
+        Carta::player = 2;
+
     } catch (std::runtime_error &e) {
         std::cerr << "Erro ao inicializar o jogador: " << e.what() << std::endl;
     } catch (std::exception &e) {

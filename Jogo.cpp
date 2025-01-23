@@ -1,7 +1,7 @@
 #include "Jogo.h"
 
 //coordenadas da barra de vida e de energia na tela
-unsigned int coordX1 = 1100, coordY1 = 600, coordX2= 400, coordY2= 400;
+unsigned int coordX1 = 1100, coordY1 = 670, coordX2= 1100, coordY2= 50;
 
 Jogo::Jogo(sf::RenderWindow* window) : janela(window){
     jogador1 = new Jogador(coordX1, coordY1);
@@ -39,10 +39,17 @@ void Jogo::run_jogo() {
 void Jogo::desenhar() {
     janela->clear();
     janela->draw(mesa);
+    
     for(int i=0; i<5; i++){
         janela->draw(jogador1->get_sprite_mao_carta(i));
         janela->draw(jogador1->get_sprite_mao_inseto(i));
     }
+    
+    for(int i=0; i<5; i++){
+        janela->draw(jogador2->get_sprite_mao_carta(i));
+        janela->draw(jogador2->get_sprite_mao_inseto(i));
+    }
+     
     janela->draw(monte.get_sprite_monte());
     janela->draw(jogador1->get_sprite_barra());
     janela->draw(jogador2->get_sprite_barra());

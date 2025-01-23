@@ -1,9 +1,22 @@
 #include "Carta.h"
 
-Carta::Carta(sf::Vector2f coords){
-    try{
+Carta::Carta(sf::Vector2f coords)
+{
+    std::cout << "Carta::player: " << Carta::player << std::endl;
+
+    // Modifica as coordenadas para o player 2
+    if (Carta::player == 2)
+    {
+        coords.x -= 50;
+    }
+    std::cout << "x: " << coords.x << ", y: " << coords.y << std::endl;
+
+    try
+    {
         carregar_carta_frente(coords);
-    } catch(std::exception &e){
+    }
+    catch (std::exception &e)
+    {
         std::cout << e.what() << std::endl;
     }
     dano = 0;
@@ -11,10 +24,11 @@ Carta::Carta(sf::Vector2f coords){
     efeito = 0;
     custo = 0;
     caminho = "";
-
 }
-void Carta::carregar_carta_frente(sf::Vector2f coords){
-    if(!texturaCarta1.loadFromFile("assets/cards/carta_frente.png")){
+void Carta::carregar_carta_frente(sf::Vector2f coords)
+{
+    if (!texturaCarta1.loadFromFile("assets/cards/carta_frente.png"))
+    {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     carta.setTexture(texturaCarta1);
@@ -22,9 +36,10 @@ void Carta::carregar_carta_frente(sf::Vector2f coords){
     carta.setScale(escala, escala);
 }
 
-
-void Carta::carregar_carta_tras(sf::Vector2f coords){
-    if(!texturaCarta.loadFromFile("assets/cards/carta_tras.png")){
+void Carta::carregar_carta_tras(sf::Vector2f coords)
+{
+    if (!texturaCarta.loadFromFile("assets/cards/carta_tras.png"))
+    {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     carta.setTexture(texturaCarta);
@@ -32,8 +47,10 @@ void Carta::carregar_carta_tras(sf::Vector2f coords){
     carta.setScale(escala, escala);
 }
 
-void Carta::carregar_carta_monte(){
-    if(!texturaCarta.loadFromFile("assets/cards/carta_tras_monte.png")){
+void Carta::carregar_carta_monte()
+{
+    if (!texturaCarta.loadFromFile("assets/cards/carta_tras_monte.png"))
+    {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     carta.setTexture(texturaCarta);
@@ -41,27 +58,35 @@ void Carta::carregar_carta_monte(){
     carta.setScale(escala, escala);
 }
 
-sf::Sprite Carta::get_sprite_carta() const{
+sf::Sprite Carta::get_sprite_carta() const
+{
     return carta;
 }
 
-sf::Sprite Carta::get_sprite_inseto() const{
+sf::Sprite Carta::get_sprite_inseto() const
+{
     return inseto;
 }
 
-sf::Vector2f Carta::get_coords_carta(int pos) const{
+sf::Vector2f Carta::get_coords_carta(int pos) const
+{
     return coordsCartas[pos];
 }
 
-sf::Vector2f Carta::get_coords_inseto(int pos) const{
+sf::Vector2f Carta::get_coords_inseto(int pos) const
+{
     return coordsInsetos[pos];
 }
 
-void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho){
-    if(!texturaInseto.loadFromFile(caminho)){
+void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho)
+{
+    if (!texturaInseto.loadFromFile(caminho))
+    {
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     inseto.setTexture(texturaInseto);
     inseto.setPosition(coords);
     inseto.setScale(escalaInseto, escalaInseto);
 }
+
+int Carta::player = 1;
