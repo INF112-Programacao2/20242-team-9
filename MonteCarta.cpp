@@ -9,6 +9,6 @@ MonteCarta::MonteCarta(){
     }
 }
 
-sf::Sprite MonteCarta::get_sprite(){
-    return carta.get_sprite();
+sf::Sprite MonteCarta::get_sprite_monte(){
+    return carta.get_sprite_carta();
 }

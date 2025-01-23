@@ -14,7 +14,7 @@ class Jogo {
         sf::Texture texturaMesa;
         Carta carta;
         MonteCarta monte;
-        Jogador jogador1, jogador2;
+        Jogador* jogador1, *jogador2;
 
     public:
         Jogo(sf::RenderWindow* window);
@@ -22,7 +22,7 @@ class Jogo {
         void loop_eventos();
         void desenhar();
         void run_jogo();
-        
+        ~Jogo();
 };
 
 
