@@ -9,12 +9,17 @@
 
 class Jogo {
     private:
+        
         sf::RenderWindow* janela;
         sf::Sprite mesa;
         sf::Texture texturaMesa;
+        sf::Sprite seta;
+        sf::Texture texturaSeta;
         Carta carta;
         MonteCarta monte;
         Jogador* jogador1, *jogador2;
+        float posicaoSeta = 301.2;
+
 
     public:
         Jogo(sf::RenderWindow* window);

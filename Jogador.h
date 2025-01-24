@@ -15,6 +15,7 @@ class Jogador {
         MonteCarta monte;
         int vida, energia;
         sf::Sprite barra;
+        
         sf::Texture texturaBarra; float escalaBarra=1;
         std::vector<Carta*> mao;
     public:
@@ -28,6 +29,7 @@ class Jogador {
         sf::Sprite get_sprite_mao_carta(int pos) const;
         sf::Sprite get_sprite_mao_inseto(int pos) const;
         sf::Sprite get_sprite_barra() const;
+        //sf::Sprite get_sprite_seta() const;
         ~Jogador();
 };
 

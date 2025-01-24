@@ -27,7 +27,10 @@ void Jogador::carrega_barra(unsigned int coordX, unsigned int coordY){
     barra.setTexture(texturaBarra);
     barra.setPosition(coordX, coordY);
     barra.setScale(escalaBarra, escalaBarra);
+
+    
 }
+
 
 
 sf::Sprite Jogador::get_sprite_barra() const{
