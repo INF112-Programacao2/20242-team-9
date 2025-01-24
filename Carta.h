@@ -46,8 +46,8 @@ class Carta{
         sf::Vector2f get_coords_frente() const;
         void carregar_carta_tras(sf::Vector2f coords);
         void carregar_carta_monte();
-        sf::Vector2f get_coords_carta(int pos) const;
-        sf::Vector2f get_coords_inseto(int pos) const;
+        sf::Vector2f get_coords_carta(int pos) ;
+        sf::Vector2f get_coords_inseto(int pos) ;
         virtual sf::Sprite get_sprite_carta() const;
         virtual sf::Sprite get_sprite_inseto() const;
 

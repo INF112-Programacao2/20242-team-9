@@ -5,10 +5,7 @@ Carta::Carta(sf::Vector2f coords)
     std::cout << "Carta::player: " << Carta::player << std::endl;
 
     // Modifica as coordenadas para o player 2
-    if (Carta::player == 2)
-    {
-        coords.x -= 50;
-    }
+    
     std::cout << "x: " << coords.x << ", y: " << coords.y << std::endl;
 
     try
@@ -68,12 +65,22 @@ sf::Sprite Carta::get_sprite_inseto() const
     return inseto;
 }
 
-sf::Vector2f Carta::get_coords_carta(int pos) const
+sf::Vector2f Carta::get_coords_carta(int pos) 
 {
+    if (Carta::player == 2)
+    {
+        for (auto& coord : coordsCartas) {
+            coord.y -= 500;
+        }
+
+        for (auto& coordInseto : coordsInsetos) {
+            coordInseto.y -= 500;
+        }
+    }
     return coordsCartas[pos];
 }
 
-sf::Vector2f Carta::get_coords_inseto(int pos) const
+sf::Vector2f Carta::get_coords_inseto(int pos) 
 {
     return coordsInsetos[pos];
 }
