@@ -26,10 +26,11 @@ class Jogador {
         void comprarEnergia();
         int get_numCartas() const;
         void inicializa_jogador(unsigned int coordX, unsigned int coordY);
-        sf::Sprite get_sprite_mao_carta(int pos) const;
+        sf::Sprite& get_sprite_mao_carta(int pos);
         sf::Sprite get_sprite_mao_inseto(int pos) const;
         sf::Sprite get_sprite_barra() const;
         //sf::Sprite get_sprite_seta() const;
+        Carta* getCarta(int pos);
         ~Jogador();
 };
 

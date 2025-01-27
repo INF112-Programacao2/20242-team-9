@@ -37,8 +37,12 @@ sf::Sprite Jogador::get_sprite_barra() const{
     return barra;
 }
 
-sf::Sprite Jogador::get_sprite_mao_carta(int pos) const {
-    if(pos >= 0 && pos < mao.size() && mao[pos] != nullptr) {
+Carta* Jogador::getCarta(int pos){
+    return mao[pos];
+} 
+
+sf::Sprite& Jogador::get_sprite_mao_carta(int pos) {
+    if (pos >= 0 && pos < mao.size() && mao[pos] != nullptr) {
         return mao[pos]->get_sprite_carta();
     }
     throw std::out_of_range("Carta inválida na mão");

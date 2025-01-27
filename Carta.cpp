@@ -55,9 +55,12 @@ void Carta::carregar_carta_monte()
     carta.setScale(escala, escala);
 }
 
-sf::Sprite Carta::get_sprite_carta() const
-{
+sf::Sprite& Carta::get_sprite_carta() {
     return carta;
+}
+
+void Carta::centraliza(sf::Sprite& c){
+    c.setPosition(500, 500);
 }
 
 sf::Sprite Carta::get_sprite_inseto() const
@@ -95,5 +98,8 @@ void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho)
     inseto.setPosition(coords);
     inseto.setScale(escalaInseto, escalaInseto);
 }
+
+
+
 
 int Carta::player = 1;

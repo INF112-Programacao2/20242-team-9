@@ -28,11 +28,7 @@ class Carta{
         unsigned int velocidade;
         unsigned int custo;
 
-        unsigned int get_vida() const{return vida;}
-        unsigned int get_custo() const{return custo;}
-        unsigned int get_efeito() const{return efeito;}
-        unsigned int get_velocidade() const{return velocidade;}
-        unsigned int get_dano() const{return dano;}
+       
 
         
     public:
@@ -48,11 +44,17 @@ class Carta{
         void carregar_carta_monte();
         sf::Vector2f get_coords_carta(int pos) ;
         sf::Vector2f get_coords_inseto(int pos) ;
-        virtual sf::Sprite get_sprite_carta() const;
+        virtual sf::Sprite& get_sprite_carta();
         virtual sf::Sprite get_sprite_inseto() const;
 
         static int player;
 
+        unsigned int get_vida() const{return vida;}
+        unsigned int get_custo() const{return custo;}
+        unsigned int get_efeito() const{return efeito;}
+        unsigned int get_velocidade() const{return velocidade;}
+        unsigned int get_dano() const{return dano;}
+        void centraliza(sf::Sprite& c);
 
 };
 

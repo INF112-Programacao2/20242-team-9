@@ -75,6 +75,18 @@ void Jogo::run_jogo()
 
                 // Atualizar a posição da seta
                 seta.setPosition(posicaoSeta, 460);
+
+                if (event.key.code == sf::Keyboard::Enter) {
+                    // Iniciar batalha com a carta selecionada
+                    Carta* cartaJogador1 = jogador1->getCarta(cartaSelecionada);
+                    Carta* cartaJogador2 = jogador2->getCarta(cartaSelecionada);
+
+                    // Now we get a reference to the actual sprite and pass it to centraliza
+                    sf::Sprite& sprite = jogador1->get_sprite_mao_carta(cartaSelecionada);
+                    cartaJogador1->centraliza(sprite);
+
+                    resolver_batalha(cartaJogador1, cartaJogador2);
+                }
             }
         }
 
@@ -115,4 +127,22 @@ Jogo::~Jogo()
 {
     delete jogador1;
     delete jogador2;
+}
+
+void Jogo::resolver_batalha(Carta* carta1, Carta* carta2) {
+
+
+        
+         
+        
+        if (carta1->get_dano() > carta2->get_dano()) {
+            std::cout << "Jogador 1 vence a batalha!" << std::endl;
+            // Atualizar estado do jogo, como reduzir vida do jogador 2
+        } else if (carta1->get_dano() < carta2->get_dano()) {
+            std::cout << "Jogador 2 vence a batalha!" << std::endl;
+            // Atualizar estado do jogo, como reduzir vida do jogador 1
+        } else {
+            std::cout << "A batalha terminou em empate!" << std::endl;
+            // Lógica para empate, se necessário
+        }
 }

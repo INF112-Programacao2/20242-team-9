@@ -28,6 +28,7 @@ class Jogo {
         void desenhar();
         void run_jogo();
         ~Jogo();
+        void resolver_batalha(Carta* carta1, Carta* carta2);
 };
 
 
