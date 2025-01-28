@@ -1,8 +1,9 @@
 #include "Cigarra.h"
 
 Cigarra::Cigarra(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Carta(coordsCarta){
-    dano = 6;
-    vida = 60;
+    nome = "Cigarra";
+    dano = 5;
+    vida = 25;
     velocidade = 15;
     efeito = 2;
     custo = 4;

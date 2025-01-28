@@ -1,8 +1,9 @@
 #include "LouvaDeus.h"
 
 LouvaDeus::LouvaDeus(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Carta(coordsCarta){
-    dano = 8;
-    vida = 60;
+    nome = "Louva-Deus";
+    dano = 7;
+    vida = 25;
     velocidade = 25;
     efeito = 0;
     custo = 4;

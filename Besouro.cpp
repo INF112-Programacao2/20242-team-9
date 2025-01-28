@@ -1,6 +1,7 @@
 #include "Besouro.h"
 
 Besouro::Besouro (sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Carta(coordsCarta){
+    nome = "Besouro";
     dano = 5;
     vida = 70;
     velocidade = 15;

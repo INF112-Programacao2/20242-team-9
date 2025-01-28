@@ -37,9 +37,12 @@ sf::Sprite Jogador::get_sprite_barra() const{
     return barra;
 }
 
-Carta* Jogador::getCarta(int pos){
-    return mao[pos];
-} 
+Carta* Jogador::getCarta(int pos) {
+    if (pos >= 0 && pos < mao.size()) {
+        return mao[pos];
+    }
+    throw std::out_of_range("Posição inválida na mão do jogador");
+}
 
 sf::Sprite& Jogador::get_sprite_mao_carta(int pos) {
     if (pos >= 0 && pos < mao.size() && mao[pos] != nullptr) {
@@ -58,6 +61,14 @@ sf::Sprite Jogador::get_sprite_mao_inseto(int pos) const {
 
 int Jogador::get_numCartas() const{
     return mao.size();
+}
+
+void Jogador::remover_carta(Carta* carta) {
+    auto it = std::find(mao.begin(), mao.end(), carta);
+    if (it != mao.end()) {
+        delete *it; // Liberar a memória da carta
+        mao.erase(it);
+    }
 }
 
 Jogador::~Jogador() {

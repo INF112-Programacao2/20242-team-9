@@ -14,6 +14,7 @@ class Carta{
         sf::Sprite carta;
         sf::Texture texturaCarta1;
         sf::Texture texturaCarta;
+        std::string nome;
 
         sf::Sprite inseto;
         sf::Texture texturaInseto;
@@ -46,6 +47,10 @@ class Carta{
         sf::Vector2f get_coords_inseto(int pos) ;
         virtual sf::Sprite& get_sprite_carta();
         virtual sf::Sprite get_sprite_inseto() const;
+        virtual void atacar(Carta* alvo);
+        virtual void receber_dano(unsigned int dano_recebido);
+        bool esta_viva() const;
+        std::string get_nome() const;
 
         static int player;
 

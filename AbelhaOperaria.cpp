@@ -1,8 +1,9 @@
 #include "AbelhaOperaria.h"
 
 AbelhaOperaria::AbelhaOperaria(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Abelha(coordsCarta){
-    dano = 6;
-    vida = 60;
+    nome = "Abelha Operaria";
+    dano = 5;
+    vida = 30;
     velocidade = 25;
     efeito = 0;
     custo = 4;

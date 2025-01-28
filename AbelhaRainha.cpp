@@ -1,8 +1,9 @@
 #include "AbelhaRainha.h"
 
 AbelhaRainha::AbelhaRainha(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Abelha(coordsCarta){
-    dano = 10;
-    vida = 80;
+    nome = "Abelha Rainha";
+    dano = 5;
+    vida = 40;
     velocidade = 20;
     efeito = 2;
     custo = 6;

@@ -1,8 +1,9 @@
 #include "Barata.h"
 
 Barata::Barata(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto) : Carta(coordsCarta){
-    dano = 5;
-    vida = 80;
+    nome = "Barata";
+    dano = 7;
+    vida = 35;
     velocidade = 15;
     efeito = 1;
     custo = 2;

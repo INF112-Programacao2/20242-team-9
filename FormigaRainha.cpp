@@ -1,8 +1,9 @@
 #include "FormigaRainha.h"
 
 FormigaRainha::FormigaRainha(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Formiga(coordsCarta){
-    dano = 10;
-    vida = 80;
+    nome = "Formiga Rainha";
+    dano = 8;
+    vida = 40;
     velocidade = 15;
     efeito = 0;
     custo = 4;

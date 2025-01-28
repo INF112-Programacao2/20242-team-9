@@ -31,7 +31,9 @@ class Jogador {
         sf::Sprite get_sprite_barra() const;
         //sf::Sprite get_sprite_seta() const;
         Carta* getCarta(int pos);
+        void remover_carta(Carta* carta);
         ~Jogador();
+
 };
 
 #endif

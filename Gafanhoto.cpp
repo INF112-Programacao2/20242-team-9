@@ -1,6 +1,7 @@
 #include "Gafanhoto.h"
 
 Gafanhoto::Gafanhoto(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Carta(coordsCarta){
+    nome = "Gafanhoto";
     dano = 6;
     vida = 80;
     velocidade = 15;

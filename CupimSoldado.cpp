@@ -1,8 +1,9 @@
 #include "CupimSoldado.h"
 
 CupimSoldado::CupimSoldado(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Cupim(coordsCarta) {
-    dano = 6;
-    vida = 60;
+    nome = "Cupim Soldado";
+    dano = 8;
+    vida = 30;
     velocidade = 15;
     efeito = 0;
     custo = 1;

@@ -99,6 +99,29 @@ void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho)
     inseto.setScale(escalaInseto, escalaInseto);
 }
 
+void Carta::atacar(Carta* alvo) {
+    std::cout << nome << " ataca " << alvo->get_nome() << " causando "
+              << dano << " de dano." << std::endl;
+    alvo->receber_dano(dano);
+}
+
+void Carta::receber_dano(unsigned int dano_recebido) {
+    if (dano_recebido >= vida) {
+        vida = 0;
+    } else {
+        vida -= dano_recebido;
+    }
+    std::cout << nome << " agora tem " << vida << " de vida." << std::endl;
+}
+
+bool Carta::esta_viva() const {
+    return vida > 0;
+}
+
+std::string Carta::get_nome() const {
+    return nome;
+}
+
 
 
 
