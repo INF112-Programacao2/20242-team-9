@@ -94,7 +94,7 @@ void Jogo::run_jogo() {
         while (janela->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 janela->close();
-            std::cout << "JOGANDO" << std::endl;
+            //std::cout << "JOGANDO" << std::endl;
             // Efeito de hover
             sf::Vector2i posicaoMouse = sf::Mouse::getPosition(*janela);
             if (verificar_clique_botao(posicaoMouse)) {

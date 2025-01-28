@@ -46,6 +46,7 @@ void GameManager::run() {
                     // Failsafe in case jogo is null
                     estadoAtual = EstadoJogo::Menu;
                     menu.resetar_estado();
+                    std::cout << "TESTE COMMIT" << std::endl;
                 }
                 break;
 
