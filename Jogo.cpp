@@ -191,3 +191,5 @@ void Jogo::verificar_vitoria() {
         janela->close();
     }
 }
+
+//testedecommit
