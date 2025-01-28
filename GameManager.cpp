@@ -28,6 +28,7 @@ void GameManager::run() {
                         // Return to menu if game initialization fails
                         estadoAtual = EstadoJogo::Menu;
                         menu.resetar_estado();
+                        std::cout << "Teste" << std::endl;
                     }
                 } else if(menu.is_regras_selecionado()){
                     estadoAtual = EstadoJogo::Regras;
