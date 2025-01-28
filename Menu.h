@@ -11,12 +11,16 @@
 
 class Menu{
     private:
+        bool isSomAtivado;
         sf::RenderWindow *window;
         int pos;
         bool escolhido, selecionado;
         EstadoJogo estadoAtual;
         sf::Font *fonte;
-        sf::Sprite fundoRegras1, fundoRegras2;
+        std::vector<sf::SoundBuffer> buffersRegras;
+        std::vector<sf::Sound> sonsRegras;
+        sf::Sprite fundoRegras1, fundoRegras2, com_som, sem_som;
+        sf::Texture txtComSom, txtSemSom;
         sf::Sprite fundoMenu;
         sf::Sprite setaDir, setaEsq;
         sf::Texture txtSetaDir, txtSetaEsq;
@@ -36,9 +40,18 @@ class Menu{
         void carrega_spriteSetas();
         void carrega_fonte();
         void carrega_fundoRegras();
+        void carrega_sonsRegras();
+        void carrega_iconeSom();
+        void tocar_sonsRegras();
+        void atualizar_icone_som(bool comSom);
+        void parar_sonsRegras();
+        void toggleSom();
         sf::Sprite get_fundoMenu() const {return fundoMenu;}
         sf::Sprite get_setaDir() const {return setaDir;}
         sf::Sprite get_setaEsq() const {return setaEsq;}
+        sf::Sprite get_comSom() const {return com_som;}
+        sf::Sprite get_semSom() const {return sem_som;}
+        bool get_isSomAtivado() const {return isSomAtivado;}
         void carrega_fundoMenu();
         sf::Sprite get_fundoRegras_1() const{return fundoRegras1;}
         sf::Sprite get_fundoRegras_2() const{return fundoRegras2;}
@@ -47,6 +60,8 @@ class Menu{
         bool is_jogar_selecionado();
         bool is_regras_selecionado();
         bool is_opcoes_selecionado();
+        bool will_sem_som_selecionado(float x, float y);
+        bool will_com_som_selecionado(float x, float y);
         bool is_setaDir_on_click(float x, float y);
         bool is_setaEsq_on_click(float x, float y);
 };

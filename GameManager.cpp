@@ -59,8 +59,12 @@ void GameManager::run() {
 
 void GameManager::run_regras() {
     sf::Event evento;
+    size_t indiceRegra = 0;  // Para controlar qual regra está sendo exibida
+    bool mostrarOutroSprite = false;
+    bool isComSom = true;
+    bool somTocado = false; // Para garantir que o som seja tocado apenas uma vez
+
     while (window.isOpen() && estadoAtual == EstadoJogo::Regras) {
-        bool mostrarOutroSprite=false;
         while (window.pollEvent(evento)) {
             if (evento.type == sf::Event::Closed) {
                 window.close();
@@ -68,32 +72,58 @@ void GameManager::run_regras() {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 estadoAtual = EstadoJogo::Menu; // Volta ao menu ao pressionar ESC
             }
+
             if (evento.type == sf::Event::MouseButtonPressed && evento.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                // Verifica se o clique está no sprite da seta
+                // Verifica se o clique está na seta direita
                 if (menu.is_setaDir_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    mostrarOutroSprite = !mostrarOutroSprite; // Alterna o sprite
-                }
-                else if(menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))){
                     mostrarOutroSprite = !mostrarOutroSprite;
+                    // Debug: Verifique se o clique foi registrado
+                    std::cout << "Seta direita clicada!" << std::endl;
                 }
-            }
+                // Verifica se o clique está na seta esquerda
+                else if (menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                    mostrarOutroSprite = !mostrarOutroSprite;
+                    // Debug: Verifique se o clique foi registrado
+                    std::cout << "Seta esquerda clicada!" << std::endl;
+                }
+                // Verifique o clique no ícone de som
+                if (menu.will_com_som_selecionado(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) ||
+                    menu.will_sem_som_selecionado(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) ) {
+                    menu.toggleSom();
+                }
 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                estadoAtual = EstadoJogo::Menu; // Volta ao menu ao pressionar ESC
             }
         }
 
         window.clear();
-        if(!mostrarOutroSprite){
+        if (!mostrarOutroSprite) {
             window.draw(menu.get_fundoRegras_1());
             window.draw(menu.get_setaDir());
-        } else{
+        } else {
             window.draw(menu.get_fundoRegras_2());
             window.draw(menu.get_setaEsq());
         }
+
+        if (isComSom && !somTocado) { // Toca o som apenas uma vez
+            menu.tocar_sonsRegras();
+            somTocado = true; // Marca que o som foi tocado
+        }
+
+        // Desenha o ícone de som (com ou sem som)
+        if(menu.get_isSomAtivado()){
+            window.draw(menu.get_comSom());
+        } else {
+            window.draw(menu.get_semSom());
+        }
+
         window.display();
     }
 }
+
+
+
+
+
 
