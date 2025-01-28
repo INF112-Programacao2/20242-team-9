@@ -23,7 +23,6 @@ void GameManager::run() {
                         std::cout << "Initializing game..." << std::endl;
                         jogo = new Jogo(&window);
                         estadoAtual = EstadoJogo::Jogando;
-                        std::cout << "Game initialized successfully" << std::endl;
                     }
                     catch (const std::exception& e) {
                         // Return to menu if game initialization fails
