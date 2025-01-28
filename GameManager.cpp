@@ -59,8 +59,11 @@ void GameManager::run() {
 
 void GameManager::run_regras() {
     sf::Event evento;
-    bool mostrarOutroSprite = false;  // Variável para controlar qual sprite deve ser mostrado
-    bool trocarSprite = false;  // Variável para controlar a troca do sprite
+    size_t indiceRegra = 0;  // Para controlar qual regra está sendo exibida
+    bool mostrarOutroSprite = false;
+    bool isComSom = true;
+    bool somTocado = false; // Para garantir que o som seja tocado apenas uma vez
+
     while (window.isOpen() && estadoAtual == EstadoJogo::Regras) {
         while (window.pollEvent(evento)) {
             if (evento.type == sf::Event::Closed) {
@@ -70,39 +73,56 @@ void GameManager::run_regras() {
                 estadoAtual = EstadoJogo::Menu; // Volta ao menu ao pressionar ESC
             }
 
-            // Verifica se o clique foi no botão esquerdo do mouse
             if (evento.type == sf::Event::MouseButtonPressed && evento.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                // Verifica se a seta direita foi clicada
-                if (menu.is_setaDir_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) && !trocarSprite) {
-                    mostrarOutroSprite = true;  // Exibe o outro sprite
-                    trocarSprite = true;  // Impede alternar novamente até o próximo clique
+                // Verifica se o clique está na seta direita
+                if (menu.is_setaDir_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                    mostrarOutroSprite = !mostrarOutroSprite;
+                    // Debug: Verifique se o clique foi registrado
+                    std::cout << "Seta direita clicada!" << std::endl;
                 }
-                // Verifica se a seta esquerda foi clicada
-                else if (menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) && !trocarSprite) {
-                    mostrarOutroSprite = false;  // Exibe o sprite original
-                    trocarSprite = true;  // Impede alternar novamente até o próximo clique
+                // Verifica se o clique está na seta esquerda
+                else if (menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
+                    mostrarOutroSprite = !mostrarOutroSprite;
+                    // Debug: Verifique se o clique foi registrado
+                    std::cout << "Seta esquerda clicada!" << std::endl;
                 }
-            }
-        }
+                // Verifique o clique no ícone de som
+                if (menu.will_com_som_selecionado(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) ||
+                    menu.will_sem_som_selecionado(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) ) {
+                    menu.toggleSom();
+                }
 
-        // Redefine a variável trocarSprite após algum tempo ou ação
-        if (evento.type == sf::Event::MouseButtonReleased) {
-            trocarSprite = false;  // Permite nova troca após soltar o botão do mouse
+            }
         }
 
         window.clear();
         if (!mostrarOutroSprite) {
             window.draw(menu.get_fundoRegras_1());
-            window.draw(menu.get_setaDir());  // Desenha a seta direita
+            window.draw(menu.get_setaDir());
         } else {
             window.draw(menu.get_fundoRegras_2());
-            window.draw(menu.get_setaEsq());  // Desenha a seta esquerda
+            window.draw(menu.get_setaEsq());
         }
+
+        if (isComSom && !somTocado) { // Toca o som apenas uma vez
+            menu.tocar_sonsRegras();
+            somTocado = true; // Marca que o som foi tocado
+        }
+
+        // Desenha o ícone de som (com ou sem som)
+        if(menu.get_isSomAtivado()){
+            window.draw(menu.get_comSom());
+        } else {
+            window.draw(menu.get_semSom());
+        }
+
         window.display();
     }
 }
+
+
 
 
 
