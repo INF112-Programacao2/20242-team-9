@@ -3,9 +3,6 @@
 Carta::Carta(sf::Vector2f coords)
 {
     std::cout << "Carta::player: " << Carta::player << std::endl;
-
-    // Modifica as coordenadas para o player 2
-    
     std::cout << "x: " << coords.x << ", y: " << coords.y << std::endl;
 
     try
@@ -16,12 +13,21 @@ Carta::Carta(sf::Vector2f coords)
     {
         std::cout << e.what() << std::endl;
     }
+    
+    // Inicialização dos atributos
     dano = 0;
+    vida = 0;
+    vidaOriginal = 0;
     velocidade = 0;
     efeito = 0;
     custo = 0;
     caminho = "";
+    
+    // Inicialização dos novos atributos de controle de efeitos
+    efeitoBarataUsado = false;
+    efeitoGafanhotoUsado = false;
 }
+
 void Carta::carregar_carta_frente(sf::Vector2f coords)
 {
     if (!texturaCarta1.loadFromFile("assets/cards/carta_frente.png"))
@@ -99,7 +105,14 @@ void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho)
     inseto.setScale(escalaInseto, escalaInseto);
 }
 
+void Carta::inicializa_jogador()
+{
+    // Implementação da inicialização do jogador, se necessário
+}
 
-
+sf::Vector2f Carta::get_coords_frente() const
+{
+    return carta.getPosition();
+}
 
 int Carta::player = 1;

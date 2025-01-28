@@ -7,11 +7,6 @@ class LouvaDeus : public Carta {
         const Tipo tipo = Tipo::LouvaDeus;
     public:
         LouvaDeus(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        //int morder();
-        //int camuflar();
-        //int golpear();
-
-
+        void verificar_vitoria(Carta* alvo); // Efeito 11: Se derrotar uma carta, recupera metade da vida
 };
-
 #endif
