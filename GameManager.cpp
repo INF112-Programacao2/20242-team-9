@@ -26,7 +26,6 @@ void GameManager::run() {
                         std::cout << "Game initialized successfully" << std::endl;
                     }
                     catch (const std::exception& e) {
-                        std::cerr << "Failed to initialize game: " << e.what() << std::endl;
                         // Return to menu if game initialization fails
                         estadoAtual = EstadoJogo::Menu;
                         menu.resetar_estado();
