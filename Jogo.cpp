@@ -1,8 +1,9 @@
 #include "Jogo.h"
 
 Jogo::Jogo(sf::RenderWindow *window) : janela(window), turnoAtual(TurnoJogador::JOGADOR1), estadoAtual(EstadoJogo::Jogando){
-    jogador1 = new Jogador();
-    jogador2 = new Jogador();
+    jogador1 = new Jogador(1);
+    jogador2 = new Jogador(2);
+    inicializa_botao_desistir();
     try
     {
         carrega_tabuleiro();
@@ -27,11 +28,11 @@ void Jogo::inicializa_botao_desistir() {
     botaoDesistir.setFillColor(sf::Color::White);  // Texto branco
     
     // Configurar o retângulo de fundo
-    fundoBotaoDesistir.setSize(sf::Vector2f(120, 40));  // Tamanho do botão
+    fundoBotaoDesistir.setSize(sf::Vector2f(200, 40));  // Tamanho do botão
     fundoBotaoDesistir.setFillColor(sf::Color(220, 20, 20));  // Vermelho mais escuro
     fundoBotaoDesistir.setOutlineThickness(2);
     fundoBotaoDesistir.setOutlineColor(sf::Color(180, 20, 20));  // Borda mais escura
-    fundoBotaoDesistir.setPosition(1200, 20);
+    fundoBotaoDesistir.setPosition(1150, 20);
     
     // Centralizar o texto no retângulo
     sf::FloatRect textBounds = botaoDesistir.getLocalBounds();
@@ -250,6 +251,7 @@ void Jogo::desenhar() {
     janela->clear();
     janela->draw(mesa);
 
+    // Desenha as cartas dos jogadores
     for (int i = 0; i < 5; i++) {
         if(!jogador1->verifica_carta_morta(i)) {
             janela->draw(jogador1->get_sprite_mao_carta(i));
@@ -271,8 +273,13 @@ void Jogo::desenhar() {
         janela->draw(setaJogador2);
     }
 
+    // Desenha o fundo e o texto do botão de desistir
+    janela->draw(fundoBotaoDesistir);
+    janela->draw(botaoDesistir);
+
     janela->display();
 }
+
 
 Jogo::~Jogo()
 {

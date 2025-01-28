@@ -22,7 +22,7 @@ bool Menu::is_setaDir_on_click(float x, float y){
     return setaDir.getGlobalBounds().contains(x, y);
 }
 bool Menu::is_setaEsq_on_click(float x, float y){
-    return setaDir.getGlobalBounds().contains(x, y);
+    return setaEsq.getGlobalBounds().contains(x, y);
 }
 void Menu::carrega_fonte(){
     fonte = new sf::Font();
@@ -32,11 +32,16 @@ void Menu::carrega_fonte(){
 }
 
 void Menu::carrega_fundoRegras(){
-    if (!texturaRegras1.loadFromFile("assets/backgrounds/regras_background.png")){
+    if (!texturaRegras1.loadFromFile("assets/backgrounds/regras_background_1.png")){
+        throw std::runtime_error("Erro ao carregar a textura!");
+    }
+    if (!texturaRegras2.loadFromFile("assets/backgrounds/regras_background_2.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     fundoRegras1.setTexture(texturaRegras1);
     fundoRegras1.setPosition(0, 0);
+    fundoRegras2.setTexture(texturaRegras2);
+    fundoRegras2.setPosition(0, 0);
 }
 
 void Menu::carrega_fundoMenu(){
@@ -52,7 +57,7 @@ Menu::~Menu() {
 }
 
 void Menu::carrega_spriteSetas(){
-    if(!txtSetaDir.loadFromFile("assets/icons/seta_dir.png")){
+    if(!txtSetaDir.loadFromFile("assets/icons/seta_direita.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
     }
     if(!txtSetaEsq.loadFromFile("assets/icons/seta_esquerda.png")){
@@ -60,8 +65,8 @@ void Menu::carrega_spriteSetas(){
     }
     setaDir.setTexture(txtSetaDir);
     setaEsq.setTexture(txtSetaEsq);
-    setaDir.setPosition(1200, 700);
-    setaEsq.setPosition(168, 700);
+    setaDir.setPosition(1250, 700);
+    setaEsq.setPosition(118, 700);
 }
 
 void Menu::inicializa_menu() {

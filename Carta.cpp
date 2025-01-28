@@ -2,11 +2,17 @@
 
 Carta::Carta(sf::Vector2f coords)
 {
-    std::cout << "Carta::player: " << Carta::player << std::endl;
+     std::cout << "Criando carta para player: " << Carta::player << std::endl;
     isDead = false;
     isOnBoard = false;
     // Modifica as coordenadas para o player 2
     
+    if (Carta::player == 2) {
+        coords.y = 20;  // Posição Y para o jogador 2
+    } else {
+        coords.y = 520; // Posição Y para o jogador 1
+    }
+
     std::cout << "x: " << coords.x << ", y: " << coords.y << std::endl;
 
     try
@@ -76,16 +82,20 @@ sf::Sprite Carta::get_sprite_inseto() const{
 
 sf::Vector2f Carta::get_coords_carta(int pos) {
     sf::Vector2f coord = coordsCartas[pos];
-    if (Carta::player == 2) {
-        coord.y -= 500; // Ajuste a posição sem alterar o vetor original
+   if (Carta::player == 2) {
+        coord.y = 20;  // Posição Y fixa para jogador 2
+    } else {
+        coord.y = 520; // Posição Y fixa para jogador 1
     }
     return coord;
 }
 
 sf::Vector2f Carta::get_coords_inseto(int pos) {
     sf::Vector2f coord = coordsInsetos[pos];
-    if (Carta::player == 2) {
-        coord.y -= 500; // Ajuste a posição sem alterar o vetor original
+   if (Carta::player == 2) {
+        coord.y = 80;  // Posição Y fixa para insetos do jogador 2
+    } else {
+        coord.y = 580; // Posição Y fixa para insetos do jogador 1
     }
     return coord;
 }

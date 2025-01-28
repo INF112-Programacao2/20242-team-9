@@ -59,8 +59,9 @@ void GameManager::run() {
 
 void GameManager::run_regras() {
     sf::Event evento;
+    bool mostrarOutroSprite = false;  // Variável para controlar qual sprite deve ser mostrado
+    bool trocarSprite = false;  // Variável para controlar a troca do sprite
     while (window.isOpen() && estadoAtual == EstadoJogo::Regras) {
-        bool mostrarOutroSprite=false;
         while (window.pollEvent(evento)) {
             if (evento.type == sf::Event::Closed) {
                 window.close();
@@ -68,32 +69,41 @@ void GameManager::run_regras() {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 estadoAtual = EstadoJogo::Menu; // Volta ao menu ao pressionar ESC
             }
+
+            // Verifica se o clique foi no botão esquerdo do mouse
             if (evento.type == sf::Event::MouseButtonPressed && evento.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 
-                // Verifica se o clique está no sprite da seta
-                if (menu.is_setaDir_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))) {
-                    mostrarOutroSprite = !mostrarOutroSprite; // Alterna o sprite
+                // Verifica se a seta direita foi clicada
+                if (menu.is_setaDir_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) && !trocarSprite) {
+                    mostrarOutroSprite = true;  // Exibe o outro sprite
+                    trocarSprite = true;  // Impede alternar novamente até o próximo clique
                 }
-                else if(menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y))){
-                    mostrarOutroSprite = !mostrarOutroSprite;
+                // Verifica se a seta esquerda foi clicada
+                else if (menu.is_setaEsq_on_click(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y)) && !trocarSprite) {
+                    mostrarOutroSprite = false;  // Exibe o sprite original
+                    trocarSprite = true;  // Impede alternar novamente até o próximo clique
                 }
-            }
-
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                estadoAtual = EstadoJogo::Menu; // Volta ao menu ao pressionar ESC
             }
         }
 
+        // Redefine a variável trocarSprite após algum tempo ou ação
+        if (evento.type == sf::Event::MouseButtonReleased) {
+            trocarSprite = false;  // Permite nova troca após soltar o botão do mouse
+        }
+
         window.clear();
-        if(!mostrarOutroSprite){
+        if (!mostrarOutroSprite) {
             window.draw(menu.get_fundoRegras_1());
-            window.draw(menu.get_setaDir());
-        } else{
+            window.draw(menu.get_setaDir());  // Desenha a seta direita
+        } else {
             window.draw(menu.get_fundoRegras_2());
-            window.draw(menu.get_setaEsq());
+            window.draw(menu.get_setaEsq());  // Desenha a seta esquerda
         }
         window.display();
     }
 }
+
+
+
 

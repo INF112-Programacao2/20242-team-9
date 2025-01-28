@@ -1,7 +1,8 @@
 #include "Jogador.h"
 
-Jogador::Jogador(): cartaSelecionada(0), isCardFighting(false), numTrocas(0), numCartasVivas(5){
+Jogador::Jogador(int playerNumber): cartaSelecionada(0), isCardFighting(false), numTrocas(0), numCartasVivas(5){
     std::srand(std::time(nullptr));
+    Carta::player = playerNumber;
     inicializa_jogador();
 }
 
@@ -21,12 +22,13 @@ void Jogador::set_morte(int pos){
 }
 void Jogador::inicializa_jogador() {
     try {
-        
+        std::cout << "Inicializando jogador com player number: " << Carta::player << std::endl;
         for (int i = 0; i < 5; i++) {
-            mao.emplace_back(deck.get_carta_deck(i)); // Constrói a Carta no vetor
+            mao.emplace_back(deck.get_carta_deck(i));
+            std::cout << "Carta " << i << " criada na posição: " << 
+                mao[i]->get_sprite_carta().getPosition().x << "," << 
+                mao[i]->get_sprite_carta().getPosition().y << std::endl;
         }
-        Carta::player = 2;
-
     } catch (std::runtime_error &e) {
         std::cerr << "Erro ao inicializar o jogador: " << e.what() << std::endl;
     } catch (std::exception &e) {

@@ -16,7 +16,7 @@ class Jogador {
         int numCartasVivas;
         bool isCardFighting;
     public:
-        Jogador();
+        Jogador(int playerNumber = 1);
         void descerCarta();
         void set_morte(int pos);
         bool verifica_carta_morta(int pos);
