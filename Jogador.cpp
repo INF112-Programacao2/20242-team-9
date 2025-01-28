@@ -36,6 +36,7 @@ void Jogador::inicializa_jogador() {
 
 Carta* Jogador::getCarta(int pos){
     return mao[pos];
+    std::cout << "Pegou Cara" << std::endl;
 } 
 
 sf::Sprite Jogador::get_sprite_mao_carta(int pos) {
