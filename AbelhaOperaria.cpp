@@ -11,3 +11,9 @@ AbelhaOperaria::AbelhaOperaria(sf::Vector2f coordsCarta, sf::Vector2f coordsInse
     carrega_icone_inseto(coordsInseto, caminho);
     carregar_carta_frente(coordsCarta);
 }
+
+// Definição do método fora do construtor
+void AbelhaOperaria::aplicar_efeito_pos_ataque(Carta* inimigo) {
+    vida += 1;
+    std::cout << nome << " recuperou 1 ponto de vida (Vida atual: " << vida << ")." << std::endl;
+}

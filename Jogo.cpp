@@ -7,6 +7,10 @@ Jogo::Jogo(sf::RenderWindow *window) : janela(window)
 {
     jogador1 = new Jogador(coordX1, coordY1);
     jogador2 = new Jogador(coordX2, coordY2);
+
+    jogador1->set_oponente(jogador2);
+    jogador2->set_oponente(jogador1);
+    
     try
     {
         carrega_tabuleiro();
@@ -124,6 +128,9 @@ void Jogo::resolver_batalha(Carta* carta1, Carta* carta2) {
     std::cout << "Jogador 1 utilizou a carta: " << carta1->get_nome() << std::endl;
     std::cout << "Jogador 2 utilizou a carta: " << carta2->get_nome() << std::endl;
 
+    carta1->aplicar_efeito_pre_ataque(carta2);
+    carta2->aplicar_efeito_pre_ataque(carta1);
+
     std::cout << "Velocidade da carta do Jogador 1: " << carta1->get_velocidade() << std::endl;
     std::cout << "Velocidade da carta do Jogador 2: " << carta2->get_velocidade() << std::endl;
 
@@ -149,6 +156,9 @@ void Jogo::resolver_batalha(Carta* carta1, Carta* carta2) {
         carta1->atacar(carta2);
         carta2->atacar(carta1);
     }
+
+    carta1->aplicar_efeito_pos_ataque(carta2);
+    carta2->aplicar_efeito_pos_ataque(carta1);
 
     // Exibir o resultado da batalha
     if (!carta1->esta_viva() && !carta2->esta_viva()) {

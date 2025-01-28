@@ -15,9 +15,9 @@ class Jogador {
         MonteCarta monte;
         int vida, energia;
         sf::Sprite barra;
-        
         sf::Texture texturaBarra; float escalaBarra=1;
         std::vector<Carta*> mao;
+        Jogador* oponente;
     public:
         Jogador(unsigned int coordX, unsigned int coordY);
         void carrega_barra(unsigned int coordX, unsigned int coordY);
@@ -32,6 +32,12 @@ class Jogador {
         //sf::Sprite get_sprite_seta() const;
         Carta* getCarta(int pos);
         void remover_carta(Carta* carta);
+        void set_oponente(Jogador* oponente);
+        Jogador* get_oponente() const;
+        void aumentar_dano_cartas(int bonus, Carta* excecao);
+        int get_num_cartas_derrotadas() const;
+        std::vector<Carta*> cartas_derrotadas;
+        void aumentar_velocidade_cartas(int bonus, Carta* excecao);
         ~Jogador();
 
 };

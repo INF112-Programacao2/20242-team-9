@@ -1,11 +1,11 @@
 #include "Carta.h"
+#include "Jogador.h"
 
 Carta::Carta(sf::Vector2f coords)
 {
     std::cout << "Carta::player: " << Carta::player << std::endl;
 
     // Modifica as coordenadas para o player 2
-    
     std::cout << "x: " << coords.x << ", y: " << coords.y << std::endl;
 
     try
@@ -22,6 +22,11 @@ Carta::Carta(sf::Vector2f coords)
     custo = 0;
     caminho = "";
 }
+
+void Carta::modificar_dano(int quantidade) {
+    dano += quantidade;
+}
+
 void Carta::carregar_carta_frente(sf::Vector2f coords)
 {
     if (!texturaCarta1.loadFromFile("assets/cards/carta_frente.png"))
@@ -68,7 +73,7 @@ sf::Sprite Carta::get_sprite_inseto() const
     return inseto;
 }
 
-sf::Vector2f Carta::get_coords_carta(int pos) 
+sf::Vector2f Carta::get_coords_carta(int pos)
 {
     if (Carta::player == 2)
     {
@@ -83,9 +88,13 @@ sf::Vector2f Carta::get_coords_carta(int pos)
     return coordsCartas[pos];
 }
 
-sf::Vector2f Carta::get_coords_inseto(int pos) 
+sf::Vector2f Carta::get_coords_inseto(int pos)
 {
     return coordsInsetos[pos];
+}
+
+void Carta::modificar_velocidade(int quantidade) {
+    velocidade += quantidade;
 }
 
 void Carta::carrega_icone_inseto(sf::Vector2f coords, std::string caminho)
@@ -122,7 +131,20 @@ std::string Carta::get_nome() const {
     return nome;
 }
 
+void Carta::set_jogador(Jogador* jogador) {
+    this->jogador = jogador;
+}
 
+void Carta::aplicar_efeito_pre_ataque(Carta* inimigo) {
+    // Implementação padrão (vazia)
+}
 
+void Carta::aplicar_efeito_pos_ataque(Carta* inimigo) {
+    // Implementação padrão (vazia)
+}
+
+void Carta::aplicar_efeito_morte(Jogador* jogador) {
+    // Implementação padrão (vazia)
+}
 
 int Carta::player = 1;

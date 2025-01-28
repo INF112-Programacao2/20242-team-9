@@ -1,18 +1,17 @@
 #ifndef BARATA_H
 #define BARATA_H
 
-#include "Tipo.h"
 #include "Carta.h"
 
-
 class Barata : public Carta {
-    private:
-        const static Tipo tipo = Tipo::Barata;
-    public:
-        Barata(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        int defender();
-        int voar();
-        int ataqueQuimico();
+private:
+    bool ressuscitou;
+
+public:
+    Barata(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método 'receber_dano'
+    void receber_dano(unsigned int dano_recebido) override;
 };
 
-#endif
+#endif // BARATA_H

@@ -4,12 +4,11 @@
 #include "Formiga.h"
 
 class FormigaRainha : public Formiga {
-    private:
-        const Tipo tipo = Tipo::FormigaRainha;
-    public:
-        FormigaRainha(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        //int morder() override;
-        //int ataqueEnxame();
+public:
+    FormigaRainha(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método de efeito pré-ataque
+    void aplicar_efeito_pre_ataque(Carta* inimigo) override;
 };
 
-#endif
+#endif // FORMIGA_RAINHA_H

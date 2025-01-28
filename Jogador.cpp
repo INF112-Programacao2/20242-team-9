@@ -8,18 +8,16 @@ Jogador::Jogador(unsigned int coordX, unsigned int coordY){
 
 void Jogador::inicializa_jogador(unsigned int coordX, unsigned int coordY) {
     try {
-        
         for (int i = 0; i < 5; i++) {
-            mao.emplace_back(deck.get_carta_deck(i)); // Constrói a Carta no vetor
+            Carta* carta = deck.get_carta_deck(i);
+            carta->set_jogador(this); // Set the owner of the card
+            mao.emplace_back(carta);
         }
-        Carta::player = 2;
-
-    } catch (std::runtime_error &e) {
-        std::cerr << "Erro ao inicializar o jogador: " << e.what() << std::endl;
     } catch (std::exception &e) {
         std::cerr << "Erro ao inicializar o jogador: " << e.what() << std::endl;
     }
 }
+
 void Jogador::carrega_barra(unsigned int coordX, unsigned int coordY){
     if(!texturaBarra.loadFromFile("assets/icons/barra_vida_energia.png")){
         throw std::runtime_error("Erro ao carregar a textura!");
@@ -30,8 +28,6 @@ void Jogador::carrega_barra(unsigned int coordX, unsigned int coordY){
 
     
 }
-
-
 
 sf::Sprite Jogador::get_sprite_barra() const{
     return barra;
@@ -66,9 +62,37 @@ int Jogador::get_numCartas() const{
 void Jogador::remover_carta(Carta* carta) {
     auto it = std::find(mao.begin(), mao.end(), carta);
     if (it != mao.end()) {
-        delete *it; // Liberar a memória da carta
+        cartas_derrotadas.push_back(*it); // Adicionar à lista de derrotadas
         mao.erase(it);
     }
+}
+
+void Jogador::aumentar_dano_cartas(int bonus, Carta* excecao) {
+    for (Carta* carta : mao) {
+        if (carta != excecao && carta != nullptr) {
+            carta->modificar_dano(bonus);
+        }
+    }
+}
+
+void Jogador::aumentar_velocidade_cartas(int bonus, Carta* excecao) {
+    for (Carta* carta : mao) {
+        if (carta != excecao && carta != nullptr) {
+            carta->modificar_velocidade(bonus);
+        }
+    }
+}
+
+void Jogador::set_oponente(Jogador* oponente) {
+    this->oponente = oponente;
+}
+
+Jogador* Jogador::get_oponente() const {
+    return oponente;
+}
+
+int Jogador::get_num_cartas_derrotadas() const {
+    return cartas_derrotadas.size();
 }
 
 Jogador::~Jogador() {
