@@ -4,13 +4,14 @@
 #include "Carta.h"
 
 class Gafanhoto : public Carta {
-    private:
-        const Tipo tipo = Tipo::Gafanhoto;
-    public:
-        Gafanhoto(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        //int voar();
-        //int camuflar();
-        //int morder();
+private:
+    bool pulou_ataque;
+
+public:
+    Gafanhoto(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método 'receber_dano'
+    void receber_dano(unsigned int dano_recebido) override;
 };
 
-#endif
+#endif // GAFANHOTO_H

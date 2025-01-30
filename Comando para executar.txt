@@ -1,0 +1,14 @@
+
+Comandos para compilar
+
+
+(Utilizando Makefile no Linux)
+
+Apenas digite "make jogo" no terminal na pasta do jogo.
+
+
+
+(Opção alternativa se tiver o SFML instalado)
+
+g++ *.cpp -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+

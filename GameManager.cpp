@@ -3,7 +3,19 @@
 GameManager::GameManager(): window(sf::VideoMode(1360, 768), "Insecttle"), 
 estadoAtual(EstadoJogo::Menu), menu(&window), jogo(nullptr) {
     window.setFramerateLimit(60);
-    jogo = new Jogo(&window);
+    if (menu.is_jogar_selecionado()) {
+        try {
+            std::cout << "Initializing game..." << std::endl;
+            delete jogo; // Libera a memória antes de criar um novo objeto
+            jogo = new Jogo(&window);
+            estadoAtual = EstadoJogo::Jogando;
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Error initializing game: " << e.what() << std::endl;
+            estadoAtual = EstadoJogo::Menu;
+            menu.resetar_estado();
+        }
+    }
 }
 
 GameManager::~GameManager() {

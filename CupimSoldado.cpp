@@ -1,12 +1,23 @@
 #include "CupimSoldado.h"
+#include "Jogador.h"
+#include <iostream>
 
-CupimSoldado::CupimSoldado(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto): Cupim(coordsCarta) {
-    dano = 6;
-    vida = 60;
+CupimSoldado::CupimSoldado(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto)
+    : Cupim(coordsCarta) {
+    nome = "Cupim Soldado";
+    dano = 2;
+    vida = 30;
+    vida_inicial = vida;
     velocidade = 15;
     efeito = 0;
-    custo = 1;
     caminho = "assets/insects/cupim_soldado.png";
     carrega_icone_inseto(coordsInseto, caminho);
     carregar_carta_frente(coordsCarta);
+}
+
+void CupimSoldado::aplicar_efeito_pre_ataque(Carta* inimigo) {
+    std::cout << "ENTROU APLICAR EFEITO PRE CUPIM SOLDADO" << std::endl;
+    int cartas_derrotadas = jogador->get_num_cartas_derrotadas();
+    dano += cartas_derrotadas;
+    std::cout << nome << " aumentou seu dano em " << cartas_derrotadas << " pontos (Dano atual: " << dano << ")." << std::endl;
 }
