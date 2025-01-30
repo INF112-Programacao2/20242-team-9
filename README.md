@@ -1,6 +1,6 @@
 # 20242-team-9
 
-# COMO COMPILAR NO ARQUIVO "COMANDO PARA EXECUTAR"
+# Como compilar no arquivo "Comando para executar"
 
 INF 112 - TRABALHO FINAL
 
