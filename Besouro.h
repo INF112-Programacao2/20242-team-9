@@ -4,15 +4,11 @@
 #include "Carta.h"
 
 class Besouro : public Carta {
-    private:
-        const Tipo tipo = Tipo::Besouro;
-    public:
-        Besouro(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        void armaduraEspinhos();
-        int golpear();
-        int voar();
+public:
+    Besouro(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método 'receber_dano'
+    void receber_dano(unsigned int dano_recebido) override;
 };
 
-
-
-#endif
+#endif // BESOURO_H

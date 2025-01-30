@@ -3,11 +3,12 @@
 
 #include "Formiga.h"
 
-class FormigaZangao : public Formiga{
-    private:
-        const Tipo tipo = Tipo::FormigaZangao;
-    public:
-        FormigaZangao(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+class FormigaZangao : public Formiga {
+public:
+    FormigaZangao(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método de efeito pré-ataque
+    void aplicar_efeito_pre_ataque(Carta* inimigo) override;
 };
 
-#endif
+#endif // FORMIGA_ZANGAO_H

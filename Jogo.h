@@ -14,7 +14,7 @@ class Jogo {
         sf::RectangleShape fundoBotaoDesistir;  // Novo elemento para o fundo do botão
         void inicializa_botao_desistir();
         bool verificar_clique_botao(const sf::Vector2i& posicaoMouse);
-
+        int cartaSelecionadaJ1, cartaSelecionadaJ2;
         TurnoJogador turnoAtual;
         EstadoJogo estadoAtual;
         sf::RenderWindow* janela;
@@ -23,6 +23,7 @@ class Jogo {
         sf::Sprite setaJogador1;
         sf::Sprite setaJogador2;
         sf::Texture texturaSeta1, texturaSeta2;
+        Carta *cartaJogador1, *cartaJogador2;
         float posicaoSeta1 = 301.2;
         float posicaoSeta2 = 301.2;
         Carta carta;
@@ -32,6 +33,7 @@ class Jogo {
         int ultimaPosicaoValidaJogador2 = 0;
 
     public:
+        void verificar_vitoria();
         Jogo(sf::RenderWindow* window);
         void carrega_tabuleiro();
         void loop_eventos();
@@ -41,10 +43,11 @@ class Jogo {
         void desenhar();
         void run_jogo();
         void carrega_setas();
+        void fecha_janela();
         void volta_posicao_carta_selecionada(Carta *carta, int pos);
         void centraliza_carta_selecionada(Carta* carta, int pos);
         ~Jogo();
-        int resolver_batalha(Carta* carta1, Carta* carta2);
+        int resolver_batalha(Carta* carta1, Carta* carta2, int posCarta1, int posCarta2);
 };
 
 

@@ -3,12 +3,12 @@
 
 #include "Carta.h"
 
-class Cigarra : public Carta{
-    private:
-        const static Tipo tipo = Tipo::Cigarra;
-    public:
-        Cigarra(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        //void carrega_icone_inseto(sf::Vector2f coords, std::string caminho);
+class Cigarra : public Carta {
+public:
+    Cigarra(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método 'atacar'
+    void atacar(Carta* alvo) override;
 };
 
-#endif
+#endif // CIGARRA_H

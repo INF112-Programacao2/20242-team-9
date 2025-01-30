@@ -3,13 +3,14 @@
 
 #include "Cupim.h"
 
-class CupimRei : public Cupim{
-    private:
-        const Tipo tipo = Tipo::CupimRei;
-    public:
-        CupimRei(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
-        //int morder () override;
-        //int voar () override {};
+class Jogador;
+
+class CupimRei : public Cupim {
+public:
+    CupimRei(sf::Vector2f coordsCarta, sf::Vector2f coordsInseto);
+
+    // Sobrescrever o método de efeito de morte
+    void aplicar_efeito_morte(Jogador* jogador_inimigo) override;
 };
 
-#endif
+#endif // CUPIM_REI_H
